@@ -1,19 +1,22 @@
-# RoadForge Mobile V0.3 — édition des courbes
+# RoadForge Mobile V0.4 — Graphe routier (étape 1)
 
-Application web statique, à déposer à la racine du dépôt GitHub Pages.
+## Ajouts
+- Détection de carrefours (croix, T, Y) entre routes droites et courbes au même niveau.
+- Graphe routier dérivé avec nœuds, connexions, identifiants de route et coordonnées métriques.
+- Bouton **Nœuds** pour afficher/masquer les carrefours.
+- Bouton **Réseau JSON** pour exporter `roadforge-network.json` (distinct de la sauvegarde de carte).
+- Compatible avec les cartes ForgeMap V1 de la V0.3.
 
-## Nouveautés
-- En mode **Modifier**, toucher une route puis glisser ses poignées vertes (extrémités) ou orange (courbure).
-- **Inverser courbe** : sélectionner une route puis inverser la courbure, ou convertir une droite en courbe.
-- **Redresser** : retirer le point de contrôle de la route sélectionnée.
-- Annuler/rétablir, autosauvegarde et export JSON conservés.
-- Cache du service worker mis à jour.
-
-## Limites
-- Les intersections restent **visuelles**, sans nœuds routables.
-- Les données conservent le format ForgeMap v1 de la V0.2.
-- Cette version est une étape fonctionnelle d'édition, pas encore la refonte complète du graphe routier.
-- Les modifications tactiles et la publication GitHub Pages restent à valider sur Android.
+## Limites connues
+- Les croisements courbes sont approximés par 48 segments ; précision à affiner.
+- Pas encore de ponts ni de tunnels : tous les croisements sont au même niveau.
+- Pas encore de sens de circulation, voies, feux, priorités ou ronds-points.
+- Les nœuds proches de moins de 0,5 m sont fusionnés pour le graphe, sans déplacer visuellement les routes.
+- Les routes qui se superposent sur une longueur ne sont pas fusionnées.
+- Tests tactiles Android et tests de routage Unity non encore effectués.
 
 ## Installation
-Sauvegarder/exporter la carte si besoin, puis remplacer les quatre fichiers à la racine du dépôt : index.html, sw.js, manifest.webmanifest, README.md.
+Remplacer à la racine du dépôt GitHub Pages les quatre fichiers du ZIP. Après publication, recharger la page.
+
+## Test suggéré
+Créer une croix avec deux routes droites ; un nœud vert doit apparaître au croisement. Créer un T en terminant une route sur une autre ; le nœud doit également apparaître. Exporter le réseau JSON et vérifier les nœuds/connexions.
