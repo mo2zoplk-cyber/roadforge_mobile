@@ -1,20 +1,19 @@
-# RoadForge Mobile V0.2
+# RoadForge Mobile V0.3 — édition des courbes
 
-Éditeur de cartes 2D pour Android via GitHub Pages.
+Application web statique, à déposer à la racine du dépôt GitHub Pages.
 
 ## Nouveautés
-- Croisements détectés et affichés par points verts (pas encore un graphe de navigation).
-- Accrochage magnétique des nouveaux points aux extrémités existantes.
-- Routes courbes quadratiques avec courbure automatique.
-- Compatibilité avec les sauvegardes locales et fichiers JSON ForgeMap V1 de la V0.1.
-- Mise à jour du cache PWA (v02).
+- En mode **Modifier**, toucher une route puis glisser ses poignées vertes (extrémités) ou orange (courbure).
+- **Inverser courbe** : sélectionner une route puis inverser la courbure, ou convertir une droite en courbe.
+- **Redresser** : retirer le point de contrôle de la route sélectionnée.
+- Annuler/rétablir, autosauvegarde et export JSON conservés.
+- Cache du service worker mis à jour.
 
-## Installation GitHub Pages
-Remplacer les fichiers à la racine du dépôt GitHub : `index.html`, `sw.js`, `manifest.webmanifest`, `README.md`.
-Vérifier Settings > Pages > Deploy from branch > main > /(root). Attendre le déploiement, puis actualiser la page.
+## Limites
+- Les intersections restent **visuelles**, sans nœuds routables.
+- Les données conservent le format ForgeMap v1 de la V0.2.
+- Cette version est une étape fonctionnelle d'édition, pas encore la refonte complète du graphe routier.
+- Les modifications tactiles et la publication GitHub Pages restent à valider sur Android.
 
-## Limites connues
-- Les croisements ne sont pas encore des nœuds routables et les ponts ne sont pas distingués.
-- La courbure est automatique; l'édition du point de contrôle est prévue plus tard.
-- La sauvegarde locale reste liée au navigateur/appareil : exporter régulièrement le JSON.
-- Pas de génération Unity 3D à ce stade.
+## Installation
+Sauvegarder/exporter la carte si besoin, puis remplacer les quatre fichiers à la racine du dépôt : index.html, sw.js, manifest.webmanifest, README.md.
