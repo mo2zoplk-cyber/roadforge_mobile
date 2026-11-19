@@ -1,22 +1,20 @@
-# RoadForge Mobile V0.4 — Graphe routier (étape 1)
+# RoadForge Mobile V0.5 — prototype de test
+
+Basé sur le ZIP V0.4 transmis par l'utilisateur.
 
 ## Ajouts
-- Détection de carrefours (croix, T, Y) entre routes droites et courbes au même niveau.
-- Graphe routier dérivé avec nœuds, connexions, identifiants de route et coordonnées métriques.
-- Bouton **Nœuds** pour afficher/masquer les carrefours.
-- Bouton **Réseau JSON** pour exporter `roadforge-network.json` (distinct de la sauvegarde de carte).
-- Compatible avec les cartes ForgeMap V1 de la V0.3.
+- Rond-point : bouton dédié, rayon 8–100 mètres, placement tactile. Huit segments de Bézier approximant un cercle. Pour raccorder une route, utilisez une extrémité du rond-point.
+- Niveaux 0 à 3 : les croisements entre niveaux différents ne produisent pas de nœud commun. Ce sont des niveaux logiques, pas encore des ponts 3D.
+- Diagnostic : composantes connexes, extrémités libres, nœuds et segments.
+- Export du graphe en version 2, avec `level` sur les nœuds et arêtes.
+- Format de carte ForgeMap v1 conservé, propriété `level` facultative.
 
-## Limites connues
-- Les croisements courbes sont approximés par 48 segments ; précision à affiner.
-- Pas encore de ponts ni de tunnels : tous les croisements sont au même niveau.
-- Pas encore de sens de circulation, voies, feux, priorités ou ronds-points.
-- Les nœuds proches de moins de 0,5 m sont fusionnés pour le graphe, sans déplacer visuellement les routes.
-- Les routes qui se superposent sur une longueur ne sont pas fusionnées.
-- Tests tactiles Android et tests de routage Unity non encore effectués.
+## Limitations
+- Ronds-points composés de 8 segments modifiables individuellement ; édition globale du rayon après placement non disponible.
+- Pas de gestion du sens giratoire, des priorités, des voies ou des règles de circulation.
+- Les intersections sont échantillonnées sur les courbes, avec une tolérance de 0,5 m sur les nœuds.
+- Les routes à niveau différent peuvent sembler se croiser en vue 2D, mais ne sont pas connectées.
+- Non testé sur Android : validation manuelle requise.
 
 ## Installation
-Remplacer à la racine du dépôt GitHub Pages les quatre fichiers du ZIP. Après publication, recharger la page.
-
-## Test suggéré
-Créer une croix avec deux routes droites ; un nœud vert doit apparaître au croisement. Créer un T en terminant une route sur une autre ; le nœud doit également apparaître. Exporter le réseau JSON et vérifier les nœuds/connexions.
+Remplacer les quatre fichiers à la racine du dépôt GitHub Pages. Sauvegarder/exporter les cartes de test si besoin.
