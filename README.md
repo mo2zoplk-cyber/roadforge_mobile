@@ -1,26 +1,20 @@
-# RoadForge Mobile V0.1
+# RoadForge Mobile V0.2
 
-Prototype autonome d'éditeur de réseau routier 2D pour mobile.
+Éditeur de cartes 2D pour Android via GitHub Pages.
 
-## Démarrer
+## Nouveautés
+- Croisements détectés et affichés par points verts (pas encore un graphe de navigation).
+- Accrochage magnétique des nouveaux points aux extrémités existantes.
+- Routes courbes quadratiques avec courbure automatique.
+- Compatibilité avec les sauvegardes locales et fichiers JSON ForgeMap V1 de la V0.1.
+- Mise à jour du cache PWA (v02).
 
-Sur ordinateur, dans ce dossier : `python -m http.server 8080` puis ouvrir `http://localhost:8080`.
-
-Sur téléphone, héberger ces fichiers sur un serveur HTTPS statique (par exemple GitHub Pages) et ouvrir l'adresse dans Chrome. Le service worker met les fichiers en cache pour une utilisation ultérieure hors ligne. Ouvrir `index.html` directement peut fonctionner mais les fonctions PWA nécessitent HTTP(S).
-
-## Contrôles
-
-Mode Route : toucher le départ puis l'arrivée. Les coordonnées sont arrondies sur une grille de 5 mètres. Mode Déplacer : glisser la carte. Pincer avec deux doigts pour zoomer. Mode Modifier : sélectionner et glisser une route ; Supprimer enlève la route sélectionnée. Annuler / Rétablir. Exporter/importer des fichiers JSON.
+## Installation GitHub Pages
+Remplacer les fichiers à la racine du dépôt GitHub : `index.html`, `sw.js`, `manifest.webmanifest`, `README.md`.
+Vérifier Settings > Pages > Deploy from branch > main > /(root). Attendre le déploiement, puis actualiser la page.
 
 ## Limites connues
-
-- Pas encore d'intersections automatiques, courbes, terrains, quartiers, ni de génération Unity.
-- Le stockage local dépend du navigateur/appareil et peut être effacé ; exporter régulièrement une copie JSON.
-- La PWA n'a pas encore d'icônes d'installation dédiées.
-- Le rendu est une maquette fonctionnelle à tester sur appareil ; aucun test physique Android n'a été effectué.
-
-## ForgeMap V1
-
-`{ "format":"ForgeMap", "version":1, "units":"meters", "roads":[{"id":"...", "type":"street", "a":{"x":0,"y":0}, "b":{"x":100,"y":0}}] }`
-
-Les axes X/Y représentent le plan horizontal de la carte. À l'import Unity, mapper X vers Unity X et Y vers Unity Z. La topologie (nœuds, croisements) sera explicitement modélisée dans une prochaine version.
+- Les croisements ne sont pas encore des nœuds routables et les ponts ne sont pas distingués.
+- La courbure est automatique; l'édition du point de contrôle est prévue plus tard.
+- La sauvegarde locale reste liée au navigateur/appareil : exporter régulièrement le JSON.
+- Pas de génération Unity 3D à ce stade.
