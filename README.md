@@ -1,20 +1,18 @@
-# RoadForge Mobile V0.5 — prototype de test
+# RoadForge Mobile V0.6 — Prototype Android
 
-Basé sur le ZIP V0.4 transmis par l'utilisateur.
+## Nouveautés
+- Rond-point sélectionnable dans **Modifier** : panneau rayon (8–100 m), voies (1–3), appliquer, supprimer.
+- Déplacer un segment d'un rond-point en mode Modifier déplace tout le rond-point.
+- Les routes dont l'extrémité correspond à un point du rond-point (tolérance 0,51 m) suivent son déplacement/redimensionnement.
+- Les huit segments du rond-point conservent un identifiant de groupe, un centre, un rayon et un nombre de voies.
+- Les cartes V0.5 sans groupes restent importables ; les ronds-points créés dans les anciennes versions restent de simples segments indépendants.
 
-## Ajouts
-- Rond-point : bouton dédié, rayon 8–100 mètres, placement tactile. Huit segments de Bézier approximant un cercle. Pour raccorder une route, utilisez une extrémité du rond-point.
-- Niveaux 0 à 3 : les croisements entre niveaux différents ne produisent pas de nœud commun. Ce sont des niveaux logiques, pas encore des ponts 3D.
-- Diagnostic : composantes connexes, extrémités libres, nœuds et segments.
-- Export du graphe en version 2, avec `level` sur les nœuds et arêtes.
-- Format de carte ForgeMap v1 conservé, propriété `level` facultative.
+## Limites connues
+- Les voies sont des métadonnées, sans simulation de circulation.
+- Les connexions aux points intermédiaires d'un arc ne sont pas préservées lors d'un redimensionnement.
+- Les routes raccordées ne sont déplacées que par leurs extrémités ; une géométrie courbe peut devoir être retouchée.
+- Le réseau est recalculé depuis la géométrie. Il n'y a pas encore de vrais raccordements 3D ou de routage directionnel.
+- À tester manuellement sur Android avant validation.
 
-## Limitations
-- Ronds-points composés de 8 segments modifiables individuellement ; édition globale du rayon après placement non disponible.
-- Pas de gestion du sens giratoire, des priorités, des voies ou des règles de circulation.
-- Les intersections sont échantillonnées sur les courbes, avec une tolérance de 0,5 m sur les nœuds.
-- Les routes à niveau différent peuvent sembler se croiser en vue 2D, mais ne sont pas connectées.
-- Non testé sur Android : validation manuelle requise.
-
-## Installation
-Remplacer les quatre fichiers à la racine du dépôt GitHub Pages. Sauvegarder/exporter les cartes de test si besoin.
+## Publication
+Extraire et remplacer les quatre fichiers du dépôt GitHub Pages. Vérifier que le titre indique V0.6.
